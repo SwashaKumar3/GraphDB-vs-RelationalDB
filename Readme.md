@@ -1,37 +1,68 @@
-Neo4j vs Relational Database
+# 📊 GraphDB vs RelationalDB
 
-Description
+This project compares the performance and efficiency of a **Graph Database (Neo4j)** and a **Relational Database (MySQL)** using a real-world dataset derived from academic research data. It evaluates how each database handles complex relationships and multi-perspective queries, with a focus on execution time and query structure.
 
-This project is a university research graph database designed to manage complex networks of academic research data.
+## Project Overview
 
-Installation 
-We have majorly used these three softwares in the course of our project. 
-	•	Neo4j Installation:
-           Download and install Neo4j from the official website. Follow the installation guide for your operating system. After installation, start the Neo4j server and open the Neo4j Browser to interact with the database.
-	•	MySQL Installation:  Install MySQL by downloading the appropriate installer from the MySQL Downloads page. Run the installer and follow the on-screen instructions to set up the server and create your root user.
+While relational databases are optimized for transactional processes and structured data, graph databases excel in representing and querying complex, interconnected data. This project explores those differences by:
 
-	•	Python 3.10.5 Installation:  Python 3.10.5 can be installed from the Python Downloads  
-After installation, follow these steps to ensure proper working. 
-For macOS:
+- Creating equivalent relational and graph data models
+- Running a set of real-world queries in both MySQL and Neo4j
+- Measuring query execution times using Python
+- Analyzing the efficiency and suitability of each database type for various use cases
 
-	•	Download the Installer: Go to the Python Downloads page and download the latest Python installer for macOS.
+## 📚 Dataset and Use Case
 
-	•	Run the Installer: Open the downloaded file (a package file with a .pkg extension).This will open the Python Installer; follow the prompts to install Python. You might need to enter your administrator password.
+The dataset is based on research articles, researchers, affiliations, publishers, DB indexers, and research projects. Data was obtained via:
 
-	•	Verify the Installation: Open the Terminal app (you can find it in the Applications > Utilities folder or search for it using Spotlight). Type python3 --version and press Enter. You should see the Python version you installed displayed.
+- **Web scraping** from Google Scholar
+- **Manual augmentation** with structured metadata (e.g., generated researcher IDs, affiliations)
+- **Storage** in CSV files which were imported into MySQL and Neo4j
 
-	•	Add Python to PATH (if necessary): In most cases, the installer should automatically add Python to your PATH. If you find that the python3 command is not recognized, you may need to add Python to your PATH manually. This is less common with recent Python installers for macOS.
+## 🧪 Technologies Used
 
-	•	Install pip (if not included):
+| Tool         | Purpose                              |
+|--------------|--------------------------------------|
+| Python       | Web scraping, query automation       |
+| MySQL        | Relational database implementation   |
+| Neo4j        | Graph database implementation        |
+| SQL          | Querying MySQL                       |
+| Cypher       | Querying Neo4j                       |
+| BeautifulSoup| Web scraping                         |
 
-	•	Modern Python versions come with pip installed. You can check by typing pip3 --version in the Terminal. If it's not installed, you can download get-pip.py from https://bootstrap.pypa.io/get-pip.py and run it with Python.
 
-For Windows:
+## 📈 Evaluation Methodology
 
-	•	Download the Installer: Visit the Python Downloads page for Windows and download the installer suitable for your version of Windows (32-bit or 64-bit).
+A Python script was used to:
+- Connect to both MySQL and Neo4j
+- Run equivalent queries in each database
+- Record execution time for each query
 
-	•	Run the Installer: Run the downloaded executable file. Important: Make sure to check the box that says “Add Python 3.x to PATH” before clicking “Install Now.” Follow the rest of the prompts to complete the installation.
+**Sample Queries:**
+- Retrieve article-author-publisher relations
+- Filter articles by funding source
+- Aggregate researchers and affiliations
+- Identify unpublished research projects with leads/co-leads
 
-	•	Verify the Installation: Open Command Prompt (you can search for cmd in the Start menu). Type python --version and press Enter. You should see the Python version you installed. Similarly, you can check pip by typing pip --version.
+## 🏁 Key Findings
 
-	•	Install pip (if not included): If for some reason pip was not installed, you can download get-pip.py as mentioned above and run it using Python.
+| Query Description                                                   | MySQL Time | Neo4j Time |
+|---------------------------------------------------------------------|------------|------------|
+| Article with DBID = 'IEEE3'                                        | 0.004s     | 0.002s     |
+| Articles with DBID = 'ACM5' and PID = 'QAP1'                        | 0.002s     | 0.002s     |
+| Articles with funding ≥ 15000                                      | 0.005s     | 0.002s     |
+| Research projects not yet published with lead/co-lead info         | 0.016s     | 0.009s     |
+| Full multi-join article-author-affiliation-project-type extraction | 0.06s      | 0.013s     |
+
+✔ **Neo4j outperformed MySQL** in complex queries involving multiple relationships and joins.
+
+## 🧾 Citation
+
+Paper Inspiration:
+> *University Research Graph Database for Efficient Multi-Perspective Data Analysis using Neo4j*  
+> IEEE ITIS 2020 – [Read here](https://ieeexplore.ieee.org/document/9320965)
+
+---
+
+
+
