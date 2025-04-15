@@ -1,4 +1,4 @@
-# 📊 GraphDB vs RelationalDB
+# GraphDB vs RelationalDB
 
 This project compares the performance and efficiency of a **Graph Database (Neo4j)** and a **Relational Database (MySQL)** using a real-world dataset derived from academic research data. It evaluates how each database handles complex relationships and multi-perspective queries, with a focus on execution time and query structure.
 
@@ -11,7 +11,7 @@ While relational databases are optimized for transactional processes and structu
 - Measuring query execution times using Python
 - Analyzing the efficiency and suitability of each database type for various use cases
 
-## 📚 Dataset and Use Case
+## Dataset and Use Case
 
 The dataset is based on research articles, researchers, affiliations, publishers, DB indexers, and research projects. Data was obtained via:
 
@@ -19,7 +19,7 @@ The dataset is based on research articles, researchers, affiliations, publishers
 - **Manual augmentation** with structured metadata (e.g., generated researcher IDs, affiliations)
 - **Storage** in CSV files which were imported into MySQL and Neo4j
 
-## 🧪 Technologies Used
+## Technologies Used
 
 | Tool         | Purpose                              |
 |--------------|--------------------------------------|
@@ -31,7 +31,7 @@ The dataset is based on research articles, researchers, affiliations, publishers
 | BeautifulSoup| Web scraping                         |
 
 
-## 📈 Evaluation Methodology
+## Evaluation Methodology
 
 A Python script was used to:
 - Connect to both MySQL and Neo4j
@@ -44,7 +44,7 @@ A Python script was used to:
 - Aggregate researchers and affiliations
 - Identify unpublished research projects with leads/co-leads
 
-## 🏁 Key Findings
+## Key Findings
 
 | Query Description                                                   | MySQL Time | Neo4j Time |
 |---------------------------------------------------------------------|------------|------------|
@@ -54,9 +54,9 @@ A Python script was used to:
 | Research projects not yet published with lead/co-lead info         | 0.016s     | 0.009s     |
 | Full multi-join article-author-affiliation-project-type extraction | 0.06s      | 0.013s     |
 
-✔ **Neo4j outperformed MySQL** in complex queries involving multiple relationships and joins.
+**Neo4j outperformed MySQL** in complex queries involving multiple relationships and joins.
 
-## 🧾 Citation
+## Citation
 
 Paper Inspiration:
 > *University Research Graph Database for Efficient Multi-Perspective Data Analysis using Neo4j*  
